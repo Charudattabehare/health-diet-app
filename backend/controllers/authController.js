@@ -5,7 +5,7 @@ const { getIsInMemory, getMemoryStore } = require('../config/db');
 
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET || 'super_secret_health_diet_jwt_key_2026_safe', {
-    expiresIn: '30d'
+    expiresIn: '50d'
   });
 };
 

@@ -1,4 +1,7 @@
-const mongoose = require('mongoose');
+if (process.env.NODE_ENV === 'production') {
+  console.error('MongoDB connection failed:', error.message);
+  process.exit(1);
+}const mongoose = require('mongoose');
 
 let isInMemoryMode = false;
 const memoryStore = {
