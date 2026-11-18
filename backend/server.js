@@ -5,25 +5,24 @@ const { connectDB } = require('./config/db');
 
 dotenv.config();
 
+const express = require("express");
+const cors = require("cors");   // only once
+
 const app = express();
-
-// Connect to MongoDB
-connectDB();
-
-// Middleware
-const cors = require("cors");
 
 app.use(
   cors({
     origin: [
       "https://health-diet-app.netlify.app",
-      "http://localhost:5173", // keeps local development working
+      "http://localhost:5173",
     ],
-    credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+
+app.use(express.json());
+// ...your routes below
 
 // Routes
 app.use('/api/auth', require('./routes/authRoutes'));
